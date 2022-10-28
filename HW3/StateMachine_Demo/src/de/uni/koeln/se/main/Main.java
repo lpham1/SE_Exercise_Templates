@@ -3,7 +3,6 @@ package de.uni.koeln.se.main;
 import java.util.Scanner; 
 
 import de.uni.koeln.se.state.Elevator;
-import de.uni.koeln.se.state.Elv_States;
 
 public class Main {
 	public static void main(String[] args) 
@@ -22,7 +21,7 @@ public class Main {
 		 System.out.println("--------------------------------------------");
 
 		
-		 Elevator elv=new  Elevator(dest_floor);
+		 Elevator elv = new  Elevator(dest_floor);
 
 		
 	}
