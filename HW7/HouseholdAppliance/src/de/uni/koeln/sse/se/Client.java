@@ -26,6 +26,13 @@ public static void main(String[] args) {
 		
         List<HouseholdItem> namesList = Arrays.asList(microwaveOven,tv,wineGlass,coffeeTable,bed,cupboard );
         householdItmes.addAll(namesList);
+
+		Visitor v1 = new MovingCostCalculator();
+		Visitor v2 = new InstructionGenerator();
+		for (HouseholdItem item: householdItmes){
+			item.accept(v1);
+			item.accept(v2);
+		}
 		
   
 }
