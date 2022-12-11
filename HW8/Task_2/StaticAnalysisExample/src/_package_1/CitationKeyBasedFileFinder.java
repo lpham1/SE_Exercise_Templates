@@ -24,7 +24,7 @@ import java.util.Locale;
 public class CitationKeyBasedFileFinder {
 	private final boolean exactKeyOnly;
 
-    CitationKeyBasedFileFinder(boolean exactKeyOnly) {
+    public CitationKeyBasedFileFinder(boolean exactKeyOnly) {
         this.exactKeyOnly = exactKeyOnly;
     }
 
@@ -33,11 +33,10 @@ public class CitationKeyBasedFileFinder {
         Objects.requireNonNull(entry);
 
         Optional<String> citeKeyOptional = entry.getCitationKey();
-        if (StringUtil.isBlank(citeKeyOptional)) {
-            return Collections.emptyList();
+        if (!StringUtil.isBlank(citeKeyOptional)) {
         }
         String citeKey = citeKeyOptional.get();
-
+        
         List<Path> result = new ArrayList<>();
 
         // First scan directories

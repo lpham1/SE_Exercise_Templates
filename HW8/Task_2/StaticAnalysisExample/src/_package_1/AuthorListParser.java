@@ -180,26 +180,26 @@ public class AuthorListParser {
         while (continueLoop) {
             Token token = getToken();
             switch (token) {
-                case EOF:
-                case AND:
+                
+                case AND, EOF:
                     continueLoop = false;
                     break;
                 case COMMA:
                     if (commaFirst < 0) {
                         commaFirst = tokens.size();
+                        break;
                     } else if (commaSecond < 0) {
                         commaSecond = tokens.size();
+                        break;
                     }
+                    break;
          
                 case WORD:
                     tokens.add(original.substring(ts, tokenEnd));
                     tokens.add(original.substring(ts, tokenAbbrEnd));
                     tokens.add(tokenTerm);
                     tokens.add(tokenCase);
-                    if (commaFirst >= 0) {
-                        break;
-                    }
-                    if (lastStart >= 0) {
+                    if (commaFirst >= 0 || lastStart >= 0) {
                         break;
                     }
                     if (vonStart < 0) {
@@ -275,11 +275,11 @@ public class AuthorListParser {
         } else {
             // commas are present: it affects only 'first part' and 'junior part'
             firstPartEnd = tokens.size();
-            if (commaSecond < 0) {
+            if (commaSecond < 0 && commaFirst < firstPartEnd ) {
                 // one comma
-                if (commaFirst < firstPartEnd) {
-                    firstPartStart = commaFirst;
-                }
+            	firstPartStart = commaFirst;
+
+            	
             } else {
                 // two or more commas
                 if (commaSecond < firstPartEnd) {

@@ -4,18 +4,17 @@ import java.util.ArrayList;
 
 public class ShoppingBasket {
 	public static Items item_list=new Items();
-	private static Integer totalPrice=0;
+	private Integer totalPrice=0;
 	
 
 	ArrayList<String> MyItems=new ArrayList<String>();
 
 	public ShoppingBasket() {
-
+		
 	}
 	
 	public void addTobasket(String item) {
 		
-
 		setTotalPrice(getTotalPrice()+ item_list.getPrice(item));
 			
 		
@@ -33,7 +32,7 @@ public  Integer getTotalPrice() {
 }
 
 public  void setTotalPrice(Integer totalPrice) {
-	ShoppingBasket.totalPrice = totalPrice;
+	this.totalPrice = totalPrice;
 }
 
 }
